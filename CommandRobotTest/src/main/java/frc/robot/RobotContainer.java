@@ -9,6 +9,7 @@ import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.commandXboxControllerDB;
+import frc.robot.subsystems.coneSubsystem;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -31,11 +32,19 @@ public class RobotContainer {
    private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem(m_driverController);
 
 
-  /** The container for the robot. Contains subsystems, OI devices, and commands. */
-  public RobotContainer() {
-    // Configure the trigger bindings
-    configureBindings();
-  }
+
+
+  private final commandXboxControllerDB m_driverController1 =
+  new commandXboxControllerDB(OperatorConstants.KDriverControllerport1);
+
+private final coneSubsystem coneRun = new coneSubsystem(m_driverController1);
+
+
+/** The container for the robot. Contains subsystems, OI devices, and commands. */
+public RobotContainer() {
+// Configure the trigger bindings
+configureBindings();
+} 
 
   /**
    * Use this method to define your trigger->command mappings. Triggers can be created via the
@@ -53,10 +62,14 @@ public class RobotContainer {
 
     // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
     // cancelling on release.
-    m_driverController.b().toggleOnTrue(m_exampleSubsystem.exampleMethodCommand(.2));
-    m_driverController.a().whileTrue(m_exampleSubsystem.exampleMethodCommand(.25));
-    m_driverController.x().whileTrue(m_exampleSubsystem.exampleMethodCommand(.1));
-    //m_driverController.y().whileTrue(m_exampleSubsystem.joyStickSpeed());
+
+    m_driverController1.leftBumper().whileTrue(coneRun.coneRunCommand(-.2));
+    
+    m_driverController1.leftBumper().whileFalse(coneRun.coneRunCommand(0));
+    // System.out.println(coneRun.coneEncoder());
+    coneRun.coneEncoder();
+    //m_driverController.a().whileTrue(m_exampleSubsystem.exampleMethodCommand(.25));
+    
     
   }
 
