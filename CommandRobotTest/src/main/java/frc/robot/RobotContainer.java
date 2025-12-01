@@ -38,6 +38,7 @@ public class RobotContainer {
   new commandXboxControllerDB(OperatorConstants.KDriverControllerport1);
 
 private final coneSubsystem coneRun = new coneSubsystem(m_driverController1);
+private final outTakeSubsystem wheelRun = new outTakeSubsystem(m_driverController1);
 
 
 /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -64,11 +65,10 @@ configureBindings();
     // cancelling on release.
 
     m_driverController1.leftBumper().whileTrue(coneRun.coneRunCommand(-.2));
-    
     m_driverController1.leftBumper().whileFalse(coneRun.coneRunCommand(0));
+    m_driverController1.rightBumper().whileTrue(wheelRun.wheelRunCommand()); 
     // System.out.println(coneRun.coneEncoder());
     coneRun.coneEncoder();
-    //m_driverController.a().whileTrue(m_exampleSubsystem.exampleMethodCommand(.25));
     
     
   }
