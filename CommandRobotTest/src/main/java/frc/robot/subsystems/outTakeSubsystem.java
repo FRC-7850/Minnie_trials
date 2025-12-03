@@ -1,4 +1,4 @@
-
+package frc.robot.subsystems;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
 import com.revrobotics.RelativeEncoder;
@@ -15,7 +15,7 @@ public class outTakeSubsystem extends SubsystemBase {
 
     public outTakeSubsystem(CommandXboxController xboxController){
 
-    wheelMotor = new SparkMax(24, MotorType.kBrushless);
+    wheelMotor = new SparkMax(30, MotorType.kBrushless);
 
      m_wheelController = xboxController; 
 

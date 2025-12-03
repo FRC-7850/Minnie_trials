@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
-public class ExampleSubsystem extends SubsystemBase {
+public class driveTrainSubsystem extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
 
   private SparkMax leftFront; 
@@ -20,7 +20,7 @@ public class ExampleSubsystem extends SubsystemBase {
   private DifferentialDrive diff;
   private commandXboxControllerDB m_joyStick; 
 
-  public ExampleSubsystem(commandXboxControllerDB xboxController) {
+  public driveTrainSubsystem(commandXboxControllerDB xboxController) {
 
 
     setDefaultCommand(joyStickSpeed());
@@ -35,7 +35,7 @@ public class ExampleSubsystem extends SubsystemBase {
    *
    * @return a command
    */
-  public Command exampleMethodCommand(double speed) {
+  public Command driveCommand(double speed) {
     // Inline construction of command goes here.
     // Subsystem::RunOnce implicitly requires `this` subsystem.
     return run(
