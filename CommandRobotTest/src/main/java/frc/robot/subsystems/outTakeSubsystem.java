@@ -15,7 +15,7 @@ public class outTakeSubsystem extends SubsystemBase {
 
     public outTakeSubsystem(CommandXboxController xboxController){
 
-    wheelMotor = new SparkMax(30, MotorType.kBrushless);
+    wheelMotor = new SparkMax(24, MotorType.kBrushless);
 
      m_wheelController = xboxController; 
 
